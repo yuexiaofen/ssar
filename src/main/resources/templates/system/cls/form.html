@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <form id="clsForm" action="" class="form">
+        <div th:if="${cls != null}" class="form-line">
+            <label for="classId">名称</label>
+            <input  id="classId"  name="id" type="text" readonly
+                   th:value="${cls?.id}" class="easyui-textbox">
+        </div>
+
+        <div class="form-line required">
+            <label for="className">名称</label>
+            <input id="className" name="className" type="text" th:value="${cls?.className}"  class="easyui-textbox"  data-options="required:true">
+        </div>
+        <div class="form-line required">
+            <label for="grade">年级</label>
+            <select id="grade" name="grade" type="text"
+                    class="easyui-combobox" editable="false"
+                    panelHeight="auto"
+                    th:data-options="'required:true,value:'+'\''+${cls?.grade==null?'':cls?.grade?.name}+'\''">
+                <option th:each="grade:${grades}" th:value="${grade.id}" th:text="${grade.name}"></option>
+            </select>
+        </div>
+        <div class="form-line">
+            <label for="enable">状态</label>
+            <input id="enable" name="enable" class="easyui-switchbutton" th:data-options="'onText:\'启用\',offText:\'禁用\',value:\'1\',checked:'+${cls?.enable == null || cls?.enable?'true':'false'}">
+        </div>
+
+    </form>
+</body>
+</html>

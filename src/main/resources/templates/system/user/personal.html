@@ -1,0 +1,62 @@
+<table id="permissionGrid"></table>
+<script type="text/javascript" src="js/personal.js"></script>
+<style>
+    .form .form-line label {
+        width: 77px;
+        display: inline-block;
+        text-align: right;
+        margin-right: 60px;
+    }
+    .form .form-line {
+        margin-top: 40px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        margin-left: 30px;
+    }
+</style>
+<div align="center">
+    <div align="left" style="margin-left: 35%">
+    <form id="userForm" action="" class="form" xmlns:th="http://www.thymeleaf.org">
+        <input name="id" type="hidden" th:value="${user?.id}">
+
+        <div class="form-line required">
+            <label for="account">账号</label>
+            <input th:if="${user != null}" readonly="true" name="account" type="text"
+                   th:value="${user?.account}"  class="easyui-textbox">
+            <input th:if="${user == null}" id="account" name="account" type="text"
+                   th:value="${user?.account}"  class="easyui-textbox"
+                   validType="remote['system/user/check','account']"
+                   data-options="required:true">
+        </div>
+        <div class="form-line required">
+            <label for="password">密码</label>
+            <input id="password" name="password" type="text" class="easyui-passwordbox"  th:data-options="'required:'+${user == null?'true':'false'}">
+        </div>
+        <div class="form-line required">
+            <label for="userName">姓名</label>
+            <input id="userName" name="userName" readonly="true" type="text" th:value="${user?.userName}"  class="easyui-textbox"  data-options="required:true">
+        </div>
+
+        <div class="form-line required">
+            <label for="tel">电话</label>
+            <input id="tel" name="tel" th:value="${user?.tel}" type="text" class="easyui-textbox" data-options="required:true">
+        </div>
+        <div class="form-line">
+            <label for="roles">角色</label>
+            <input id="roles" th:value="${roles}" type="text" class="easyui-textbox" readonly>
+        </div>
+        <div class="form-line">
+            <label for="email">邮箱</label>
+            <input id="email" name="email" th:value="${user?.email}" type="easyui-textbox" class="easyui-textbox">
+        </div>
+        <div class="form-line">
+            <label for="enable">状态</label>
+            <input id="enable" name="enable" readonly class="easyui-switchbutton" th:data-options="'onText:\'启用\',offText:\'禁用\',value:\'1\',checked:'+${user?.enable == null || user?.enable?'true':'false'}">
+        </div>
+        <div class="form-line">
+            <a id="submitBtn" href="#" style="margin-left: 140px" class="easyui-linkbutton" >保存修改</a>
+        </div>
+
+    </form>
+    </div>
+</div>

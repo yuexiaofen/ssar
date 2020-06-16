@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>权限控制</title>
+
+    <link rel="stylesheet" href="easyui/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" href="easyui/themes/icon.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script type="text/javascript" src="lib/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
+
+    <script>
+        $(function () {
+            $("#loginBtn").on('click',function () {
+                var loginForm = $("#loginFrom");
+                // 验证校验是否通过
+                if (loginForm.form("validate")){
+                    loginForm.submit();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="easyui-dialog"
+         style="height:240px;width:450px"
+         title="用户登录"
+         data-options="draggable:false,closable:false">
+        <form id="loginFrom" action="login" method="post">
+            <div style="margin: 20px 100px">
+                <input class="easyui-textbox" style="width: 200px" label="账号" labelWidth="50" name="account" required="true">
+            </div>
+            <div style="margin: 20px 100px">
+                <input class="easyui-passwordbox" style="width: 200px"  label="密码" labelWidth="50" name="password" required="true">
+            </div>
+            <div style="text-align: center">
+                <button id="loginBtn" iconCls="fa fa-sign-in" class="easyui-linkbutton">登录</button>
+            </div>
+            <div  style="text-align: center;padding: 5px;color: red" th:if="${error != null}" th:text="${error}"></div>
+        </form>
+
+    </div>
+</body>
+</html>

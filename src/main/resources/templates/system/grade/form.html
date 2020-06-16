@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <form id="gradeForm" action="" class="form">
+        <input name="id" type="hidden" th:value="${grade?.id}">
+        <div class="form-line required">
+            <label for="name">名称</label>
+            <input id="name" name="name" type="text" th:value="${grade?.name}"  class="easyui-textbox"  data-options="required:true">
+        </div>
+        <div class="form-line required">
+            <label for="year">入学年份</label>
+            <input id="year" name="year" th:value="${grade?.year}" type="text" class="easyui-textbox" data-options="required:true">
+        </div>
+        <div class="form-line">
+            <label for="enable">状态</label>
+            <input id="enable" name="enable" class="easyui-switchbutton" th:data-options="'onText:\'启用\',offText:\'禁用\',value:\'1\',checked:'+${grade?.enable == null || grade?.enable?'true':'false'}">
+        </div>
+
+    </form>
+</body>
+</html>

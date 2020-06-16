@@ -1,0 +1,17 @@
+<table id="trianingGrid"></table>
+<div id="trianingGridAction" style="display: none;" xmlns:th="http://www.thymeleaf.org">
+    <a th:if="${#lists.contains(session.keys,'system/trianing/edit')}" class="actions fa fa-edit edit">编辑</a>
+    <a th:if="${#lists.contains(session.keys,'system/trianing/delete')}" class="actions fa fa-trash-o delete">删除</a>
+</div>
+<div id="trianingGridToobar" style="display: none;" xmlns:th="http://www.thymeleaf.org">
+    <a th:if="${#lists.contains(session.keys,'system/trianing/create')}" class="actions easyui-linkbutton create" iconCls="fa fa-plus" plain="true">创建</a>
+    <div style="float: right">
+        <input class="fa-search" id="ss">
+        <div id="mm" style="width:120px">
+            <!--<div data-options="name:'trianingName'">姓名</div>
+            <div data-options="name:'account'">账号</div>-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/trianing.js"></script>

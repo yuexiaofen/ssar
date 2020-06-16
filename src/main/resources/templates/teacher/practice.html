@@ -1,0 +1,16 @@
+<table id="practiceGrid"></table>
+<div id="practiceGridAction" style="display: none;" xmlns:th="http://www.thymeleaf.org">
+    <a th:if="${#lists.contains(session.keys,'teacher/practice/edit')}" class="actions fa fa-edit edit">编辑</a>
+    <a th:if="${#lists.contains(session.keys,'teacher/practice/delete')}" class="actions fa fa-trash-o delete">删除</a>
+</div>
+<div id="practiceGridToobar" style="display: none;" xmlns:th="http://www.thymeleaf.org">
+    <a th:if="${#lists.contains(session.keys,'teacher/practice/create')}" class="actions easyui-linkbutton create" iconCls="fa fa-plus" plain="true">创建用户</a>
+    <div style="float: right">
+        <input class="fa-search" id="ss">
+        <div id="mm" style="width:120px">
+            <div data-options="name:'id'">编号</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/practice.js"></script>
